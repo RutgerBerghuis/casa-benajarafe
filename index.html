@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Holiday Rental in Benajarafe</title>
+    <title data-i18n="header.title">Holiday Rental in Benajarafe</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7/css/flag-icons.min.css">
     <style>
         header {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://via.placeholder.com/1920x600?text=Vakantiehuis+Benajarafe');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/front.jpg');
             background-size: cover;
             background-position: center;
             color: white;
@@ -26,9 +27,181 @@
             margin-bottom: 1rem;
         }
         .card {
-            height: 100%;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             border: none;
+            height: 100%; /* Ensure cards are same height */
+        }
+        .image-gallery {
+            display: grid;
+            gap: 1.5rem;
+        }
+        /* General Image Styling */
+        img {
+            border-radius: 0.5rem;
+        }
+        .full-width-image {
+            width: 100%;
+            height: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            margin-bottom: 1rem;
+        }
+        .amenities-section .row {
+            margin-bottom: 4rem !important;
+        }
+        .amenities-section h3 {
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Custom Layouts --- */
+        
+        /* Standard Grids */
+        .bedroom-images {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .bedroom-images img {
+            width: 100%;
+            height: auto;
+            object-fit: cover; /* Changed to cover for better filling */
+            background-color: #f8f9fa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Columns */
+        .bedroom-images-2 { grid-template-columns: 1fr; }
+        .bedroom-images-3 { grid-template-columns: 1fr; }
+        .bedroom-images-4 { grid-template-columns: 1fr; }
+
+        @media (min-width: 576px) {
+            .bedroom-images-2 { grid-template-columns: repeat(2, 1fr); }
+            .bedroom-images-3 { grid-template-columns: repeat(2, 1fr); }
+            .bedroom-images-4 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 768px) {
+            .bedroom-images-3 { grid-template-columns: repeat(3, 1fr); }
+            .bedroom-images-4 { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* 1. Master Bedroom Layout: 2 Top, 1 Bottom (Full width) */
+        .master-bedroom-layout {
+            display: grid;
+            gap: 1rem;
+            grid-template-columns: 1fr;
+            margin-bottom: 1rem;
+        }
+        .master-bedroom-layout img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        @media (min-width: 576px) {
+            .master-bedroom-layout {
+                grid-template-columns: 1fr 1fr;
+            }
+            /* The 3rd image (Balcony) spans both columns */
+            .master-bedroom-layout img:nth-child(3) {
+                grid-column: 1 / -1; 
+            }
+        }
+
+        /* 2. Bedroom 4 Layout: Left wider (2fr 1fr) */
+        .bedroom-4-layout {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            grid-template-columns: 1fr;
+        }
+        .bedroom-4-layout img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .bedroom-4-layout {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        /* 3. Bedroom 5 Layout: First image large left, others stacked right */
+        .bedroom-5-layout {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            grid-template-columns: 1fr;
+        }
+        .bedroom-5-layout img {
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        @media (min-width: 768px) {
+            .bedroom-5-layout {
+                grid-template-columns: 2fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                /* Replaced fixed height with aspect-ratio to prevent text overlap */
+                aspect-ratio: 16 / 10; 
+            }
+            /* The first image spans 2 rows */
+            .bedroom-5-layout img:nth-child(1) {
+                grid-row: 1 / 3;
+                grid-column: 1 / 2;
+            }
+        }
+
+        /* Existing Utility Classes */
+        .living-room-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .living-room-layout .stacked-images {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .living-room-layout img, .side-images img, .terrace-layout img, .pool-layout img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            background-color: #f8f9fa;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+        .side-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-left: 1rem;
+        }
+        @media (max-width: 767px) {
+            .side-images, .living-room-layout, .terrace-first-row, .pool-layout {
+                grid-template-columns: 1fr;
+                margin-left: 0;
+            }
+        }
+        .terrace-layout { display: grid; gap: 1.5rem; }
+        .terrace-first-row { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 768px) {
+            .terrace-first-row { grid-template-columns: 1.5fr 1fr; gap: 1rem; }
+            .terrace-pair-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+            .pool-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; }
+        }
+        .terrace-first-row .vertical-pair, .pool-layout .vertical-images {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        .bathroom-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: #f8f9fa;
         }
     </style>
 </head>
@@ -36,17 +209,28 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Holiday Rental in Benajarafe</a>
+            <a class="navbar-brand" href="#" data-i18n="nav.brand">Holiday rental on the Costa del Sol</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#general">General</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#amenities">Amenities</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#bedrooms">Bedrooms</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#location">Location</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#general" data-i18n="nav.general">General</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#amenities" data-i18n="nav.amenities">Amenities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#bedrooms" data-i18n="nav.bedrooms">Bedrooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#location" data-i18n="nav.location">Location</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reservation" data-i18n="nav.reservation">Reservation</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="currentLanguageFlag" class="fi"></span> <span id="currentLanguageName" data-i18n="nav.language">Taal</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('nl'); return false;"><span class="fi fi-nl me-2"></span>Nederlands</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('en'); return false;"><span class="fi fi-gb me-2"></span>English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('es'); return false;"><span class="fi fi-es me-2"></span>Español</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -54,9 +238,9 @@
 
     <header class="text-center">
         <div class="container">
-            <h1 class="display-3 fw-bold">Holiday Rental in Benajarafe</h1>
-            <p class="lead">A beautiful rental home for 10 people with sea views and luxury amenities</p>
-            <a href="#pricing" class="btn btn-primary btn-lg mt-3">View Pricing</a>
+            <h1 class="display-3 fw-bold" data-i18n="header.title">Holiday rental on the Costa del Sol</h1>
+            <p class="lead" data-i18n="header.subtitle">A beautiful rental home for 10 people with sea views and luxury amenities</p>
+            <a href="#pricing" class="btn btn-primary btn-lg mt-3" data-i18n="header.button">View Pricing</a>
         </div>
     </header>
 
@@ -64,14 +248,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <h2>The House</h2>
-                    <p class="lead">Equipped for 10 people with 6 bedrooms.</p>
+                    <h2 data-i18n="general.title">The House</h2>
+                    <p class="lead" data-i18n="general.subtitle">Equipped for 10 people with 6 bedrooms.</p>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="bi bi-house-door me-2"></i> 1 double bedroom with ensuite & balcony</li>
-                        <li class="list-group-item"><i class="bi bi-layout-text-sidebar-reverse me-2"></i> 4 standard double bedrooms</li>
-                        <li class="list-group-item"><i class="bi bi-person me-2"></i> 1 single bed & 1 sofa bed</li>
-                        <li class="list-group-item"><i class="bi bi-wifi me-2"></i> 1Gbps Wifi (3 connection points)</li>
-                        <li class="list-group-item"><i class="bi bi-droplet me-2"></i> 2.5 bathrooms (2 full, 1 toilet)</li>
+                        <li class="list-group-item"><i class="bi bi-house-door me-2"></i> <span data-i18n="general.item1">1 double bedroom with ensuite & balcony</span></li>
+                        <li class="list-group-item"><i class="bi bi-layout-text-sidebar-reverse me-2"></i> <span data-i18n="general.item2">4 standard double bedrooms</span></li>
+                        <li class="list-group-item"><i class="bi bi-person me-2"></i> <span data-i18n="general.item3">1 single bed bedroom</span></li>
+                        <li class="list-group-item"><i class="bi bi-wifi me-2"></i> <span data-i18n="general.item4">1Gbps Wifi (3 connection points)</span></li>
+                        <li class="list-group-item"><i class="bi bi-droplet me-2"></i> <span data-i18n="general.item5">2.5 bathrooms (2 full, 1 toilet)</span></li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
@@ -79,25 +263,25 @@
                         <div class="col-6">
                             <div class="p-3 border rounded bg-light">
                                 <i class="bi bi-cup-hot feature-icon"></i>
-                                <h5>Fully Equipped Kitchen</h5>
+                                <h5 data-i18n="general.feature1">Fully Equipped Kitchen</h5>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="p-3 border rounded bg-light">
                                 <i class="bi bi-activity feature-icon"></i>
-                                <h5>Private Gym</h5>
+                                <h5 data-i18n="general.feature2">Private Gym</h5>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="p-3 border rounded bg-light">
                                 <i class="bi bi-film feature-icon"></i>
-                                <h5>Cinema Room</h5>
+                                <h5 data-i18n="general.feature3">Cinema Room</h5>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="p-3 border rounded bg-light">
                                 <i class="bi bi-sun feature-icon"></i>
-                                <h5>Sea View Terrace</h5>
+                                <h5 data-i18n="general.feature4">Sea View Terrace</h5>
                             </div>
                         </div>
                     </div>
@@ -108,21 +292,21 @@
 
     <section id="pricing" class="section-padding bg-light-gray">
         <div class="container">
-            <h2 class="text-center mb-5">Pricing</h2>
+            <h2 class="text-center mb-5" data-i18n="pricing.title">Pricing</h2>
             <div class="row justify-content-center">
                 <div class="col-md-5 mb-4">
                     <div class="card text-center">
                         <div class="card-header bg-warning text-dark">
-                            <h4 class="my-0">High Season</h4>
-                            <small>(June - September)</small>
+                            <h4 class="my-0" data-i18n="pricing.highSeason">High Season</h4>
+                            <small data-i18n="pricing.highSeasonPeriod">(June - September)</small>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled mt-3 mb-4 text-start mx-auto" style="max-width: 200px;">
-                                <li><strong>1 week:</strong> €1700</li>
-                                <li><strong>2 weeks:</strong> €3000</li>
-                                <li><strong>3 weeks:</strong> €4200</li>
-                                <li><strong>4 weeks:</strong> €5200</li>
-                                <li><strong>5+ weeks:</strong> +€1000/week</li>
+                                <li><strong><span data-i18n="pricing.week1">1 week:</span></strong> €1700</li>
+                                <li><strong><span data-i18n="pricing.week2">2 weeks:</span></strong> €3000</li>
+                                <li><strong><span data-i18n="pricing.week3">3 weeks:</span></strong> €4200</li>
+                                <li><strong><span data-i18n="pricing.week4">4 weeks:</span></strong> €5200</li>
+                                <li><strong><span data-i18n="pricing.week5plus">5+ weeks:</span></strong> +€1000/<span data-i18n="pricing.perWeek">week</span></li>
                             </ul>
                         </div>
                     </div>
@@ -130,16 +314,16 @@
                 <div class="col-md-5 mb-4">
                     <div class="card text-center">
                         <div class="card-header bg-primary text-white">
-                            <h4 class="my-0">Low Season</h4>
-                            <small>(November - March)</small>
+                            <h4 class="my-0" data-i18n="pricing.lowSeason">Low Season</h4>
+                            <small data-i18n="pricing.lowSeasonPeriod">(November - March)</small>
                         </div>
                         <div class="card-body">
                             <ul class="list-unstyled mt-3 mb-4 text-start mx-auto" style="max-width: 200px;">
-                                <li><strong>1 week:</strong> €700</li>
-                                <li><strong>2 weeks:</strong> €1200</li>
-                                <li><strong>3 weeks:</strong> €1600</li>
-                                <li><strong>4 weeks:</strong> €2000</li>
-                                <li><strong>5+ weeks:</strong> +€400/week</li>
+                                <li><strong><span data-i18n="pricing.week1">1 week:</span></strong> €700</li>
+                                <li><strong><span data-i18n="pricing.week2">2 weeks:</span></strong> €1200</li>
+                                <li><strong><span data-i18n="pricing.week3">3 weeks:</span></strong> €1600</li>
+                                <li><strong><span data-i18n="pricing.week4">4 weeks:</span></strong> €2000</li>
+                                <li><strong><span data-i18n="pricing.week5plus">5+ weeks:</span></strong> +€400/<span data-i18n="pricing.perWeek">week</span></li>
                             </ul>
                         </div>
                     </div>
@@ -148,84 +332,133 @@
         </div>
     </section>
 
-    <section id="amenities" class="section-padding">
+    <section id="amenities" class="section-padding amenities-section">
         <div class="container">
-            <h2 class="text-center mb-5">Amenities & Living Spaces</h2>
+            <h2 class="text-center mb-5" data-i18n="amenities.title">Amenities & Living Spaces</h2>
             
             <div class="row mb-5">
-                <div class="col-md-6 order-md-2">
-                    <h3>Living Room</h3>
-                    <p>Features a sofa, armchair, and coffee table for relaxation. Includes a small dining table for quick meals and storage cabinets for dishware. Most dining happens outside on the terrace!</p>
+                <div class="col-12 mb-4">
+                    <h3 data-i18n="amenities.livingRoom.title">Living Room</h3>
+                    <p data-i18n="amenities.livingRoom.description">Features a sofa, armchair, and coffee table for relaxation. Includes a small dining table for quick meals and storage cabinets for dishware. Most dining happens outside on the terrace!</p>
                 </div>
-                <div class="col-md-6 order-md-1">
-                    <img src="https://via.placeholder.com/600x400?text=Living+Room" class="img-fluid rounded" alt="Living Room">
+                <div class="col-12">
+                    <div class="living-room-layout">
+                        <div class="stacked-images">
+                            <img src="images/living_room_1.jpg" alt="Living Room 1">
+                            <img src="images/living_room_2.jpg" alt="Living Room 2">
+                        </div>
+                        <div class="single-image">
+                            <img src="images/living_room_3.jpg" alt="Living Room 3">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mb-5">
-                <div class="col-md-6">
-                    <h3>Kitchen</h3>
-                    <p>A very well-equipped kitchen with a filter tap for safe drinking water.</p>
+            <div class="row mb-5 align-items-start">
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <h3 data-i18n="amenities.kitchen.title">Kitchen</h3>
+                    <p data-i18n="amenities.kitchen.intro">A very well-equipped kitchen with:</p>
                     <ul>
-                        <li>Oven, 4 electric stoves, Microwave</li>
-                        <li>Dishwasher, Washing machine</li>
-                        <li>Airfryer, Blender, Juice presser</li>
-                        <li>Large fridge, Bread baker machine</li>
+                        <li data-i18n="amenities.kitchen.item1">Filter tap for safe drinking water</li>
+                        <li data-i18n="amenities.kitchen.item2">Oven, 4 electric stoves, Microwave/grill combi, water boiler</li>
+                        <li data-i18n="amenities.kitchen.item3">Dishwasher, Washing machine, 200L boiler</li>
+                        <li data-i18n="amenities.kitchen.item4">Airfryer, Bread baker machine, Blender, Juice presser</li>
+                        <li data-i18n="amenities.kitchen.item5">Large fridge, Coffee machine</li>
+                        <li data-i18n="amenities.kitchen.item6">A large collection of cookware, cutlery, glasses and tableware</li>
+                        <li data-i18n="amenities.kitchen.item7">A large collection of spices and herbs that can be used for cooking</li>
                     </ul>
                 </div>
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/600x400?text=Kitchen" class="img-fluid rounded" alt="Kitchen">
+                <div class="col-md-7">
+                    <div class="side-images">
+                        <img src="images/kitchen_1.jpg" alt="Kitchen 1">
+                        <img src="images/kitchen_2.jpg" alt="Kitchen 2">
+                    </div>
                 </div>
             </div>
 
             <div class="row mb-5">
-                <div class="col-md-6 order-md-2">
-                    <h3>Terrace</h3>
-                    <p>Our favorite part of the house with amazing sea views, perfect for evening dinners.</p>
+                <div class="col-12 mb-4">
+                    <h3 data-i18n="amenities.terrace.title">Terrace</h3>
+                    <p data-i18n="amenities.terrace.description">Our favorite part of the house with amazing sea views, perfect for evening dinners.</p>
                     <ul>
-                        <li>Large dining table (10 chairs) with umbrella</li>
-                        <li>Corner sofa with table</li>
-                        <li>Outdoor kitchen with sink & Large gas BBQ</li>
-                        <li>Minibar with liquor selection (small fee applies)</li>
+                        <li data-i18n="amenities.terrace.item1">Large dining table (10 chairs) with umbrella</li>
+                        <li data-i18n="amenities.terrace.item2">Corner sofa with table</li>
+                        <li data-i18n="amenities.terrace.item3">Outdoor kitchen with sink & Large gas BBQ</li>
+                        <li data-i18n="amenities.terrace.item4">Liquor selection for preparing cocktails</li>
                     </ul>
                 </div>
-                <div class="col-md-6 order-md-1">
-                    <img src="https://via.placeholder.com/600x400?text=Terrace" class="img-fluid rounded" alt="Terrace">
+                <div class="col-12">
+                    <div class="terrace-layout">
+                        <div class="terrace-first-row">
+                            <img src="images/terrace_1.jpg" alt="Terrace 1">
+                            <div class="vertical-pair">
+                                <img src="images/terrace_6.jpg" alt="Terrace 6">
+                                <img src="images/terrace_7.jpg" alt="Terrace 7">
+                            </div>
+                        </div>
+                        <div class="terrace-pair-row">
+                            <img src="images/terrace_2.jpg" alt="Terrace 2">
+                            <img src="images/terrace_3.jpg" alt="Terrace 3">
+                        </div>
+                        <div class="terrace-pair-row">
+                            <img src="images/terrace_4.jpg" alt="Terrace 4">
+                            <img src="images/terrace_5.jpg" alt="Terrace 5">
+                        </div>
+                        <div class="terrace-pair-row">
+                            <img src="images/terrace_8.jpg" alt="Terrace 8">
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <div class="row mb-5">
-                <div class="col-md-6">
-                    <h3>Gym</h3>
-                    <p>Basement gym to stay fit, featuring a 130W fan for cooling.</p>
+            <div class="row mb-5 align-items-start">
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <h3 data-i18n="amenities.gym.title">Gym</h3>
+                    <p data-i18n="amenities.gym.intro">Basement gym to stay fit, featuring:</p>
                     <ul>
-                        <li>180cm tall punching bag, Boxing gloves & pads</li>
-                        <li>Benchpress & Halters (50kgs adjustable weights)</li>
-                        <li>Yogamat</li>
+                        <li data-i18n="amenities.gym.item1">180cm tall punching bag, Boxing gloves & pads</li>
+                        <li data-i18n="amenities.gym.item2">Benchpress & Halters (50kgs adjustable weights)</li>
+                        <li data-i18n="amenities.gym.item3">Yoga mat</li>
+                        <li data-i18n="amenities.gym.item4">130W fan for staying cool</li>
                     </ul>
                 </div>
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/600x400?text=Gym" class="img-fluid rounded" alt="Gym">
+                <div class="col-md-7">
+                    <div class="side-images">
+                        <img src="images/gym_1.jpg" alt="Gym 1">
+                        <img src="images/gym_2.jpg" alt="Gym 2">
+                    </div>
                 </div>
             </div>
 
             <div class="row mb-5">
-                <div class="col-md-6 order-md-2">
-                    <h3>Cinema</h3>
-                    <p>Basement equipped with a large sofa and projector. Connected to a Plex server with a vast library of movies and series. Requests for specific content are welcome!</p>
+                <div class="col-12 mb-4">
+                    <h3 data-i18n="amenities.cinema.title">Cinema</h3>
+                    <p data-i18n="amenities.cinema.description">Basement equipped with a large sofa and projector. Connected to a Plex server with a vast library of movies and series. Requests for specific content are welcome!</p>
                 </div>
-                <div class="col-md-6 order-md-1">
-                    <img src="https://via.placeholder.com/600x400?text=Cinema" class="img-fluid rounded" alt="Cinema">
+                <div class="col-12">
+                    <img src="images/cinema.jpg" class="full-width-image" alt="Cinema">
                 </div>
             </div>
 
              <div class="row">
-                <div class="col-md-6">
-                    <h3>Pool & Garden</h3>
-                    <p>The urbanization features a well-maintained large garden with swimming pools. Includes a small pool/river between trees for reading and a large pool for swimming.</p>
+                <div class="col-12 mb-4">
+                    <h3 data-i18n="amenities.pool.title">Pool & Garden</h3>
+                    <p data-i18n="amenities.pool.description">The urbanization features a well-maintained large garden with swimming pools. Includes a small pool/river between trees for relaxing and a large pool for swimming.</p>
                 </div>
-                <div class="col-md-6">
-                    <img src="https://via.placeholder.com/600x400?text=Pool" class="img-fluid rounded" alt="Pool">
+                <div class="col-12">
+                    <div class="terrace-layout">
+                        <div class="terrace-first-row">
+                            <img src="images/pool_1.jpg" alt="Pool 1">
+                            <div class="vertical-pair">
+                                <img src="images/pool_3.jpg" alt="Pool 3">
+                                <img src="images/pool_4.jpg" alt="Pool 4">
+                            </div>
+                        </div>
+                        <div class="terrace-pair-row">
+                            <img src="images/pool_2.jpg" alt="Pool 2">
+                            <img src="images/pool_5.jpg" alt="Pool 5">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -233,99 +466,185 @@
 
     <section id="bedrooms" class="section-padding bg-light-gray">
         <div class="container">
-            <h2 class="text-center mb-5">Bedrooms</h2>
+            <h2 class="text-center mb-5" data-i18n="bedrooms.title">Bedrooms</h2>
             <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
+                <div class="col-md-6">
                     <div class="card">
+                        <div class="master-bedroom-layout">
+                            <img src="images/balcony.jpg" alt="Master Bedroom Balcony">
+                            <img src="images/bedroom_master_2.jpg" alt="Master Bedroom 2">
+                            <img src="images/bedroom_master_1.jpg" alt="Master Bedroom 1">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Master Bedroom</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">First Floor</h6>
-                            <p class="card-text">Double bed, ensuite balcony with sea views, ensuite bathroom, AC, large TV, and ample wardrobe space.</p>
+                            <h5 class="card-title" data-i18n="bedrooms.master.title">Master Bedroom</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.master.floor">First Floor</h6>
+                            <p class="card-text" data-i18n="bedrooms.master.description">Double bed, ensuite balcony with sea views, ensuite bathroom, AC, large TV, and ample wardrobe space.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+                
+                <div class="col-md-6">
                     <div class="card">
+                        <div class="bedroom-images bedroom-images-2">
+                            <img src="images/bedroom_2_1.jpg" alt="Bedroom 2 - 1">
+                            <img src="images/bedroom_2_2.jpg" alt="Bedroom 2 - 2">
+                            <img src="images/bedroom_2_3.jpg" alt="Bedroom 2 - 3">
+                            <img src="images/bedroom_2_4.jpg" alt="Bedroom 2 - 4">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Bedroom 2</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">First Floor</h6>
-                            <p class="card-text">Double bed, adjustable desk with sea view, office chair, AC, and large wardrobe.</p>
+                            <h5 class="card-title" data-i18n="bedrooms.bedroom2.title">Bedroom 2</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom2.floor">First Floor</h6>
+                            <p class="card-text" data-i18n="bedrooms.bedroom2.description">Double bed, adjustable desk with sea view, office chair, AC, and large wardrobe.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+
+                <div class="col-md-6">
                     <div class="card">
+                        <div class="bedroom-images bedroom-images-2">
+                            <img src="images/bedroom_3_1.jpg" alt="Bedroom 3 - 1">
+                            <img src="images/bedroom_3_2.jpg" alt="Bedroom 3 - 2">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Bedroom 3</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Main Floor</h6>
-                            <p class="card-text">Double bed, large wardrobe, one nightstand, and a ventilator.</p>
+                            <h5 class="card-title" data-i18n="bedrooms.bedroom3.title">Bedroom 3</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom3.floor">Main Floor</h6>
+                            <p class="card-text" data-i18n="bedrooms.bedroom3.description">Double bed, large wardrobe, one nightstand, and a ventilator.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+
+                <div class="col-md-6">
                     <div class="card">
+                        <div class="bedroom-4-layout">
+                            <img src="images/bedroom_4_1.jpg" alt="Bedroom 4 - 1">
+                            <img src="images/bedroom_4_2.jpg" alt="Bedroom 4 - 2">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Bedroom 4</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Basement</h6>
-                            <p class="card-text">Double bed, wardrobe with mirror, desk with office chair, ventilator, laundry basket, and ceiling window.</p>
+                            <h5 class="card-title" data-i18n="bedrooms.bedroom4.title">Bedroom 4</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom4.floor">Basement</h6>
+                            <p class="card-text" data-i18n="bedrooms.bedroom4.description">Double bed, wardrobe with mirror, desk with office chair, ventilator, laundry basket, and ceiling window.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+
+                <div class="col-md-6">
                     <div class="card">
+                        <div class="bedroom-5-layout">
+                            <img src="images/bedroom_5_1.jpg" alt="Bedroom 5 - 1">
+                            <img src="images/bedroom_5_2.jpg" alt="Bedroom 5 - 2">
+                            <img src="images/bedroom_5_3.jpg" alt="Bedroom 5 - 3">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Bedroom 5</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Basement</h6>
-                            <p class="card-text">Double bed, large wardrobe, desk with office chair, and ventilator.</p>
+                            <h5 class="card-title" data-i18n="bedrooms.bedroom5.title">Bedroom 5</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom5.floor">Basement</h6>
+                            <p class="card-text" data-i18n="bedrooms.bedroom5.description">Double bed, large wardrobe, desk with office chair, and ventilator.</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-lg-4">
+
+                <div class="col-md-6">
                     <div class="card">
+                        <div class="bedroom-images bedroom-images-2">
+                            <img src="images/bedroom_6_1.jpg" alt="Bedroom 6 - 1">
+                            <img src="images/bedroom_6_2.jpg" alt="Bedroom 6 - 2">
+                        </div>
                         <div class="card-body">
-                            <h5 class="card-title">Bedroom 6</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Basement</h6>
-                            <p class="card-text">Single bed, large wardrobe, adjustable desk with office chair, and ventilator.</p>
+                            <h5 class="card-title" data-i18n="bedrooms.bedroom6.title">Bedroom 6</h5>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom6.floor">Basement</h6>
+                            <p class="card-text" data-i18n="bedrooms.bedroom6.description">Single bed, large wardrobe, adjustable desk with office chair, and ventilator.</p>
                         </div>
                     </div>
                 </div>
             </div>
             
             <div class="mt-5">
-                <h4>Bathrooms</h4>
-                <p>The house has a 200-liter boiler for long hot showers.</p>
-                <ul>
-                    <li><strong>Bathroom 1 (First Floor):</strong> Full bathroom</li>
-                    <li><strong>Bathroom 2 (First Floor):</strong> Ensuite to Master Bedroom</li>
-                    <li><strong>Toilet (Main Floor)</strong></li>
-                </ul>
+                <h4 data-i18n="bedrooms.bathrooms.title">Bathrooms</h4>
+                <p data-i18n="bedrooms.bathrooms.description">The house has a 200-liter boiler for long hot showers.</p>
+                <div class="row g-4 mt-3">
+                    <div class="col-md-4">
+                        <img src="images/bathroom_1.jpg" class="bathroom-img" alt="Bathroom 1">
+                        <p class="mt-2"><strong data-i18n="bedrooms.bathrooms.bathroom1">Bathroom 1 (First Floor):</strong> <span data-i18n="bedrooms.bathrooms.bathroom1Desc">Ensuite to Master Bedroom</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="images/bathroom_2.jpg" class="bathroom-img" alt="Bathroom 2">
+                        <p class="mt-2"><strong data-i18n="bedrooms.bathrooms.bathroom2">Bathroom 2 (First Floor):</strong> <span data-i18n="bedrooms.bathrooms.bathroom2Desc">Full bathroom</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="images/toilet.jpg" class="bathroom-img" alt="Toilet">
+                        <p class="mt-2"><strong data-i18n="bedrooms.bathrooms.toilet">Toilet (Main Floor)</strong></p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="location" class="section-padding">
         <div class="container">
-            <h2 class="text-center mb-4">How to get around</h2>
+            <div class="row mb-5">
+                <div class="col-12 mb-4">
+                    <h2 class="text-center mb-4" data-i18n="location.description.title">Location</h2>
+                    <p class="lead text-center" data-i18n="location.description.text">The house is located on the Costa del Sol in the tranquil town of Benajarafe. The town is very conveniently located, within half an hour drive of Malaga, closer than some of the popular holiday destinations as Marbella or Fuengirola, but with a fraction of the tourists. The town is very small and quiet and it is the perfect place to enjoy a slow pace of life and relax.</p>
+                </div>
+                <div class="col-12 mb-5">
+                    <img src="images/map_benajarafe.png" class="img-fluid rounded" alt="Map of Benajarafe" style="max-width: 100%; height: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
+                </div>
+            </div>
+            <h2 class="text-center mb-4" data-i18n="location.title">How to get around</h2>
             <div class="row text-center">
                 <div class="col-md-3 mb-3">
-                    <i class="bi bi-person-walking feature-icon"></i>
-                    <h4>Walk</h4>
-                    <p>10 min to beach, 20 min to town/Mercadona.</p>
+                    <i class="bi bi-person feature-icon"></i>
+                    <h4 data-i18n="location.walk.title">Walk</h4>
+                    <p data-i18n="location.walk.description">10 min to the beach, 20 min to the town/Mercadona.</p>
                 </div>
                 <div class="col-md-3 mb-3">
                     <i class="bi bi-bicycle feature-icon"></i>
-                    <h4>Bicycle</h4>
-                    <p>Bicycles available. 1 hour to Malaga center.</p>
+                    <h4 data-i18n="location.bicycle.title">Bicycle</h4>
+                    <p data-i18n="location.bicycle.description">2 bicycles are available to explore the area.</p>
                 </div>
                 <div class="col-md-3 mb-3">
                     <i class="bi bi-bus-front feature-icon"></i>
-                    <h4>Bus</h4>
-                    <p>Stop 10 min away. Every 45 min. 50 min to Malaga.</p>
+                    <h4 data-i18n="location.bus.title">Bus</h4>
+                    <p data-i18n="location.bus.description">Stop 10 min away. Every 45 min. 50 min to Malaga centre.</p>
                 </div>
                 <div class="col-md-3 mb-3">
                     <i class="bi bi-car-front feature-icon"></i>
-                    <h4>Car</h4>
-                    <p>Ample street parking available.</p>
+                    <h4 data-i18n="location.car.title">Car</h4>
+                    <p data-i18n="location.car.description">Street parking is available and free.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservation" class="section-padding bg-light-gray">
+        <div class="container">
+            <h2 class="text-center mb-5" data-i18n="reservation.title">Make a Reservation</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p class="lead mb-4" data-i18n="reservation.description">Get in touch with us to book your stay. We're happy to answer any questions and help you plan your perfect holiday.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 border rounded bg-white">
+                                <i class="bi bi-envelope feature-icon"></i>
+                                <h4 data-i18n="reservation.email.title">Email</h4>
+                                <p class="mb-0">
+                                    <a href="mailto:rutger.a.berghuis@gmail.com" class="text-decoration-none">rutger.a.berghuis@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-4 border rounded bg-white">
+                                <i class="bi bi-telephone feature-icon"></i>
+                                <h4 data-i18n="reservation.phone.title">Phone / WhatsApp</h4>
+                                <p class="mb-2">
+                                    <a href="tel:+34621371975" class="text-decoration-none">+34 621 371 975</a>
+                                </p>
+                                <p class="mb-0 small text-muted" data-i18n="reservation.phone.whatsapp">You can also reach us through WhatsApp</p>
+                                <a href="https://wa.me/34621371975" class="btn btn-success btn-sm mt-2" target="_blank" rel="noopener noreferrer">
+                                    <i class="bi bi-whatsapp me-1"></i> <span data-i18n="reservation.phone.whatsappButton">Contact via WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -333,10 +652,585 @@
 
     <footer class="bg-dark text-white text-center py-4">
         <div class="container">
-            <p class="mb-0">&copy; 2025 Holiday Rental in Benajarafe. All rights reserved.</p>
+            <p class="mb-0">
+                <a href="#reservation" class="text-white text-decoration-none" data-i18n="footer.reservation">Make a reservation now</a>
+            </p>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Translations object
+        const translations = {
+            en: {
+                nav: {
+                    brand: "Holiday rental on the Costa del Sol",
+                    general: "General",
+                    pricing: "Pricing",
+                    amenities: "Amenities",
+                    bedrooms: "Bedrooms",
+                    location: "Location",
+                    reservation: "Reservation",
+                    language: "Language"
+                },
+                header: {
+                    title: "Holiday rental on the Costa del Sol",
+                    subtitle: "A beautiful rental home for 10 people with sea views and luxury amenities",
+                    button: "View Pricing"
+                },
+                general: {
+                    title: "The House",
+                    subtitle: "Equipped for 10 people with 6 bedrooms.",
+                    item1: "1 double bedroom with ensuite & balcony",
+                    item2: "4 standard double bedrooms",
+                    item3: "1 single bed bedroom",
+                    item4: "1Gbps Wifi (3 connection points)",
+                    item5: "2.5 bathrooms (2 full, 1 toilet)",
+                    feature1: "Fully Equipped Kitchen",
+                    feature2: "Private Gym",
+                    feature3: "Cinema Room",
+                    feature4: "Sea View Terrace"
+                },
+                pricing: {
+                    title: "Pricing",
+                    highSeason: "High Season",
+                    highSeasonPeriod: "(June - September)",
+                    lowSeason: "Low Season",
+                    lowSeasonPeriod: "(November - March)",
+                    week1: "1 week:",
+                    week2: "2 weeks:",
+                    week3: "3 weeks:",
+                    week4: "4 weeks:",
+                    week5plus: "5+ weeks:",
+                    perWeek: "week"
+                },
+                amenities: {
+                    title: "Amenities & Living Spaces",
+                    livingRoom: {
+                        title: "Living Room",
+                        description: "Features a sofa, armchair, and coffee table for relaxation. Includes a small dining table for quick meals and storage cabinets for dishware. Most dining happens outside on the terrace!"
+                    },
+                    kitchen: {
+                        title: "Kitchen",
+                        intro: "A very well-equipped kitchen with:",
+                        item1: "Filter tap for safe drinking water",
+                        item2: "Oven, 4 electric stoves, Microwave/grill combi, water boiler",
+                        item3: "Dishwasher, Washing machine, 200L boiler",
+                        item4: "Airfryer, Bread baker machine, Blender, Juice presser",
+                        item5: "Large fridge, Coffee machine",
+                        item6: "A large collection of cookware, cutlery, glasses and tableware",
+                        item7: "A large collection of spices and herbs that can be used for cooking"
+                    },
+                    terrace: {
+                        title: "Terrace",
+                        description: "Our favorite part of the house with amazing sea views, perfect for evening dinners.",
+                        item1: "Large dining table (10 chairs) with umbrella",
+                        item2: "Corner sofa with table",
+                        item3: "Outdoor kitchen with sink & Large gas BBQ",
+                        item4: "Liquor selection for preparing cocktails"
+                    },
+                    gym: {
+                        title: "Gym",
+                        intro: "Basement gym to stay fit, featuring:",
+                        item1: "180cm tall punching bag, Boxing gloves & pads",
+                        item2: "Benchpress & Halters (50kgs adjustable weights)",
+                        item3: "Yoga mat",
+                        item4: "130W fan for staying cool"
+                    },
+                    cinema: {
+                        title: "Cinema",
+                        description: "Basement equipped with a large sofa and projector. Connected to a Plex server with a vast library of movies and series. Requests for specific content are welcome!"
+                    },
+                    pool: {
+                        title: "Pool & Garden",
+                        description: "The urbanization features a well-maintained large garden with swimming pools. Includes a small pool/river between trees for relaxing and a large pool for swimming."
+                    }
+                },
+                bedrooms: {
+                    title: "Bedrooms",
+                    master: {
+                        title: "Master Bedroom",
+                        floor: "First Floor",
+                        description: "Double bed, ensuite balcony with sea views, ensuite bathroom, AC, large TV, and ample wardrobe space."
+                    },
+                    bedroom2: {
+                        title: "Bedroom 2",
+                        floor: "First Floor",
+                        description: "Double bed, adjustable desk with sea view, office chair, AC, and large wardrobe."
+                    },
+                    bedroom3: {
+                        title: "Bedroom 3",
+                        floor: "Main Floor",
+                        description: "Double bed, large wardrobe, one nightstand, and a ventilator."
+                    },
+                    bedroom4: {
+                        title: "Bedroom 4",
+                        floor: "Basement",
+                        description: "Double bed, wardrobe with mirror, desk with office chair, ventilator, laundry basket, and ceiling window."
+                    },
+                    bedroom5: {
+                        title: "Bedroom 5",
+                        floor: "Basement",
+                        description: "Double bed, large wardrobe, desk with office chair, and ventilator."
+                    },
+                    bedroom6: {
+                        title: "Bedroom 6",
+                        floor: "Basement",
+                        description: "Single bed, large wardrobe, adjustable desk with office chair, and ventilator."
+                    },
+                    bathrooms: {
+                        title: "Bathrooms",
+                        description: "The house has a 200-liter boiler for long hot showers.",
+                        bathroom1: "Bathroom 1 (First Floor):",
+                        bathroom1Desc: "Ensuite to Master Bedroom",
+                        bathroom2: "Bathroom 2 (First Floor):",
+                        bathroom2Desc: "Full bathroom",
+                        toilet: "Toilet (Main Floor)"
+                    }
+                },
+                location: {
+                    description: {
+                        title: "Location",
+                        text: "The house is located on the Costa del Sol in the tranquil town of Benajarafe. The town is very conveniently located, within half an hour drive of Malaga, closer than some of the popular holiday destinations as Marbella or Fuengirola, but with a fraction of the tourists. The town is very small and quiet and it is the perfect place to enjoy a slow pace of life and relax."
+                    },
+                    title: "How to get around",
+                    walk: {
+                        title: "Walk",
+                        description: "10 min to the beach, 20 min to the town/Mercadona."
+                    },
+                    bicycle: {
+                        title: "Bicycle",
+                        description: "2 bicycles are available to explore the area."
+                    },
+                    bus: {
+                        title: "Bus",
+                        description: "Stop 10 min away. Every 45 min. 50 min to Malaga centre."
+                    },
+                    car: {
+                        title: "Car",
+                        description: "Street parking is available and free."
+                    }
+                },
+                reservation: {
+                    title: "Make a Reservation",
+                    description: "Get in touch with us to book your stay. We're happy to answer any questions and help you plan your perfect holiday.",
+                    email: {
+                        title: "Email"
+                    },
+                    phone: {
+                        title: "Phone / WhatsApp",
+                        whatsapp: "You can also reach us through WhatsApp",
+                        whatsappButton: "Contact via WhatsApp"
+                    }
+                },
+                footer: {
+                    reservation: "Make a reservation now"
+                }
+            },
+            nl: {
+                nav: {
+                    brand: "Vakantiehuis aan de Costa del Sol",
+                    general: "Algemeen",
+                    pricing: "Prijzen",
+                    amenities: "Voorzieningen",
+                    bedrooms: "Slaapkamers",
+                    location: "Locatie",
+                    reservation: "Reservering",
+                    language: "Taal"
+                },
+                header: {
+                    title: "Vakantiehuis aan de Costa del Sol",
+                    subtitle: "Een prachtig vakantiehuis voor 10 personen met uitzicht op zee en luxe voorzieningen",
+                    button: "Bekijk Prijzen"
+                },
+                general: {
+                    title: "Het Huis",
+                    subtitle: "Uitgerust voor 10 personen met 6 slaapkamers.",
+                    item1: "1 tweepersoons slaapkamer met eigen badkamer & balkon",
+                    item2: "4 standaard tweepersoons slaapkamers",
+                    item3: "1 eenpersoonsbed slaapkamer",
+                    item4: "1Gbps Wifi (3 aansluitpunten)",
+                    item5: "2.5 badkamers (2 volledig, 1 toilet)",
+                    feature1: "Volledig Uitgeruste Keuken",
+                    feature2: "Privé Gym",
+                    feature3: "Bioscoop",
+                    feature4: "Terras met Zeezicht"
+                },
+                pricing: {
+                    title: "Prijzen",
+                    highSeason: "Hoogseizoen",
+                    highSeasonPeriod: "(Juni - September)",
+                    lowSeason: "Laagseizoen",
+                    lowSeasonPeriod: "(November - Maart)",
+                    week1: "1 week:",
+                    week2: "2 weken:",
+                    week3: "3 weken:",
+                    week4: "4 weken:",
+                    week5plus: "5+ weken:",
+                    perWeek: "week"
+                },
+                amenities: {
+                    title: "Voorzieningen & Leefruimtes",
+                    livingRoom: {
+                        title: "Woonkamer",
+                        description: "Bevat een bank, fauteuil en salontafel voor ontspanning. Inclusief een kleine eettafel voor snelle maaltijden en opbergkasten voor servies. De meeste maaltijden worden buiten op het terras genuttigd!"
+                    },
+                    kitchen: {
+                        title: "Keuken",
+                        intro: "Een zeer goed uitgeruste keuken met:",
+                        item1: "Filterkraan voor veilig drinkwater",
+                        item2: "Oven, 4 elektrische kookplaten, Magnetron/grill combi, waterkoker",
+                        item3: "Vaatwasser, Wasmachine, 200L boiler",
+                        item4: "Airfryer, Broodmachine, Blender, Sapcentrifuge",
+                        item5: "Grote koelkast, Koffiemachine",
+                        item6: "Een grote collectie kookgerei, bestek, glazen en tafelgerei",
+                        item7: "Een grote collectie kruiden en specerijen die gebruikt kunnen worden voor het koken"
+                    },
+                    terrace: {
+                        title: "Terras",
+                        description: "Ons favoriete deel van het huis met prachtig uitzicht op zee, perfect voor avonddiner.",
+                        item1: "Grote eettafel (10 stoelen) met parasol",
+                        item2: "Hoekbank met tafel",
+                        item3: "Buitkeuken met gootsteen & Grote gas BBQ",
+                        item4: "Drankenselectie voor het bereiden van cocktails"
+                    },
+                    gym: {
+                        title: "Gym",
+                        intro: "Kelder gym om fit te blijven, met:",
+                        item1: "180cm hoge bokszak, Boks handschoenen & pads",
+                        item2: "Bankdrukken & Halters (50kg verstelbare gewichten)",
+                        item3: "Yoga mat",
+                        item4: "130W ventilator om koel te blijven"
+                    },
+                    cinema: {
+                        title: "Bioscoop",
+                        description: "Kelder uitgerust met een grote bank en projector. Verbonden met een Plex server met een uitgebreide bibliotheek van films en series. Verzoeken voor specifieke content zijn welkom!"
+                    },
+                    pool: {
+                        title: "Zwembad & Tuin",
+                        description: "De urbanisatie heeft een goed onderhouden grote tuin met zwembaden. Bevat een klein zwembad/rivier tussen bomen om te ontspannen en een groot zwembad om te zwemmen."
+                    }
+                },
+                bedrooms: {
+                    title: "Slaapkamers",
+                    master: {
+                        title: "Hoofdslaapkamer",
+                        floor: "Eerste Verdieping",
+                        description: "Tweepersoonsbed, eigen balkon met uitzicht op zee, eigen badkamer, airconditioning, grote TV en ruime kastruimte."
+                    },
+                    bedroom2: {
+                        title: "Slaapkamer 2",
+                        floor: "Eerste Verdieping",
+                        description: "Tweepersoonsbed, verstelbaar bureau met uitzicht op zee, bureaustoel, airconditioning en grote kast."
+                    },
+                    bedroom3: {
+                        title: "Slaapkamer 3",
+                        floor: "Begane Grond",
+                        description: "Tweepersoonsbed, grote kast, een nachtkastje en een ventilator."
+                    },
+                    bedroom4: {
+                        title: "Slaapkamer 4",
+                        floor: "Kelder",
+                        description: "Tweepersoonsbed, kast met spiegel, bureau met bureaustoel, ventilator, wasmand en plafondraam."
+                    },
+                    bedroom5: {
+                        title: "Slaapkamer 5",
+                        floor: "Kelder",
+                        description: "Tweepersoonsbed, grote kast, bureau met bureaustoel en ventilator."
+                    },
+                    bedroom6: {
+                        title: "Slaapkamer 6",
+                        floor: "Kelder",
+                        description: "Eenpersoonsbed, grote kast, verstelbaar bureau met bureaustoel en ventilator."
+                    },
+                    bathrooms: {
+                        title: "Badkamers",
+                        description: "Het huis heeft een 200-liter boiler voor lange warme douches.",
+                        bathroom1: "Badkamer 1 (Eerste Verdieping):",
+                        bathroom1Desc: "Eigen badkamer bij Hoofdslaapkamer",
+                        bathroom2: "Badkamer 2 (Eerste Verdieping):",
+                        bathroom2Desc: "Volledige badkamer",
+                        toilet: "Toilet (Begane Grond)"
+                    }
+                },
+                location: {
+                    description: {
+                        title: "Locatie",
+                        text: "Het huis is gelegen aan de Costa del Sol in het rustige dorpje Benajarafe. Het dorp is zeer gunstig gelegen, binnen een half uur rijden van Malaga, dichterbij dan enkele populaire vakantiebestemmingen zoals Marbella of Fuengirola, maar met een fractie van het aantal toeristen. Het dorp is zeer klein en rustig en is de perfecte plek om te genieten van een rustig tempo en te ontspannen."
+                    },
+                    title: "Hoe te bereiken",
+                    walk: {
+                        title: "Lopen",
+                        description: "10 min naar het strand, 20 min naar de stad/Mercadona."
+                    },
+                    bicycle: {
+                        title: "Fiets",
+                        description: "2 fietsen zijn beschikbaar om de omgeving te verkennen."
+                    },
+                    bus: {
+                        title: "Bus",
+                        description: "Halte 10 min verderop. Elke 45 min. 50 min naar het centrum van Malaga."
+                    },
+                    car: {
+                        title: "Auto",
+                        description: "Straatparkeren is beschikbaar en gratis."
+                    }
+                },
+                reservation: {
+                    title: "Maak een Reservering",
+                    description: "Neem contact met ons op om uw verblijf te boeken. We beantwoorden graag uw vragen en helpen u bij het plannen van uw perfecte vakantie.",
+                    email: {
+                        title: "E-mail"
+                    },
+                    phone: {
+                        title: "Telefoon / WhatsApp",
+                        whatsapp: "U kunt ons ook bereiken via WhatsApp",
+                        whatsappButton: "Contact via WhatsApp"
+                    }
+                },
+                footer: {
+                    reservation: "Maak nu een reservering"
+                }
+            },
+            es: {
+                nav: {
+                    brand: "Alquiler Vacacional en la Costa del Sol",
+                    general: "General",
+                    pricing: "Precios",
+                    amenities: "Comodidades",
+                    bedrooms: "Dormitorios",
+                    location: "Ubicación",
+                    reservation: "Reserva",
+                    language: "Idioma"
+                },
+                header: {
+                    title: "Alquiler Vacacional en la Costa del Sol",
+                    subtitle: "Una hermosa casa de alquiler para 10 personas con vistas al mar y comodidades de lujo",
+                    button: "Ver Precios"
+                },
+                general: {
+                    title: "La Casa",
+                    subtitle: "Equipada para 10 personas con 6 dormitorios.",
+                    item1: "1 dormitorio doble con baño privado y balcón",
+                    item2: "4 dormitorios dobles estándar",
+                    item3: "1 dormitorio con cama individual",
+                    item4: "Wifi 1Gbps (3 puntos de conexión)",
+                    item5: "2.5 baños (2 completos, 1 aseo)",
+                    feature1: "Cocina Completamente Equipada",
+                    feature2: "Gimnasio Privado",
+                    feature3: "Sala de Cine",
+                    feature4: "Terraza con Vista al Mar"
+                },
+                pricing: {
+                    title: "Precios",
+                    highSeason: "Temporada Alta",
+                    highSeasonPeriod: "(Junio - Septiembre)",
+                    lowSeason: "Temporada Baja",
+                    lowSeasonPeriod: "(Noviembre - Marzo)",
+                    week1: "1 semana:",
+                    week2: "2 semanas:",
+                    week3: "3 semanas:",
+                    week4: "4 semanas:",
+                    week5plus: "5+ semanas:",
+                    perWeek: "semana"
+                },
+                amenities: {
+                    title: "Comodidades y Espacios de Vida",
+                    livingRoom: {
+                        title: "Salón",
+                        description: "Cuenta con sofá, sillón y mesa de café para relajarse. Incluye una pequeña mesa de comedor para comidas rápidas y armarios de almacenamiento para vajilla. ¡La mayoría de las comidas se hacen fuera en la terraza!"
+                    },
+                    kitchen: {
+                        title: "Cocina",
+                        intro: "Una cocina muy bien equipada con:",
+                        item1: "Grifo con filtro para agua potable segura",
+                        item2: "Horno, 4 placas eléctricas, Microondas/grill combinado, hervidor de agua",
+                        item3: "Lavavajillas, Lavadora, Calentador de 200L",
+                        item4: "Airfryer, Máquina de pan, Batidora, Exprimidor",
+                        item5: "Frigorífico grande, Máquina de café",
+                        item6: "Una gran colección de utensilios de cocina, cubiertos, vasos y vajilla",
+                        item7: "Una gran colección de especias y hierbas que se pueden usar para cocinar"
+                    },
+                    terrace: {
+                        title: "Terraza",
+                        description: "Nuestra parte favorita de la casa con vistas increíbles al mar, perfecta para cenas nocturnas.",
+                        item1: "Mesa de comedor grande (10 sillas) con sombrilla",
+                        item2: "Sofá de esquina con mesa",
+                        item3: "Cocina exterior con fregadero y BBQ de gas grande",
+                        item4: "Selección de licores para preparar cócteles"
+                    },
+                    gym: {
+                        title: "Gimnasio",
+                        intro: "Gimnasio en el sótano para mantenerse en forma, con:",
+                        item1: "Saco de boxeo de 180cm, Guantes y protectores de boxeo",
+                        item2: "Banco de press y Mancuernas (pesos ajustables de 50kg)",
+                        item3: "Esterilla de yoga",
+                        item4: "Ventilador de 130W para mantenerse fresco"
+                    },
+                    cinema: {
+                        title: "Cine",
+                        description: "Sótano equipado con un sofá grande y proyector. Conectado a un servidor Plex con una amplia biblioteca de películas y series. ¡Las solicitudes de contenido específico son bienvenidas!"
+                    },
+                    pool: {
+                        title: "Piscina y Jardín",
+                        description: "La urbanización cuenta con un jardín grande y bien mantenido con piscinas. Incluye una pequeña piscina/río entre árboles para relajarse y una piscina grande para nadar."
+                    }
+                },
+                bedrooms: {
+                    title: "Dormitorios",
+                    master: {
+                        title: "Dormitorio Principal",
+                        floor: "Primera Planta",
+                        description: "Cama doble, balcón privado con vistas al mar, baño privado, aire acondicionado, TV grande y amplio espacio de armario."
+                    },
+                    bedroom2: {
+                        title: "Dormitorio 2",
+                        floor: "Primera Planta",
+                        description: "Cama doble, escritorio ajustable con vista al mar, silla de oficina, aire acondicionado y armario grande."
+                    },
+                    bedroom3: {
+                        title: "Dormitorio 3",
+                        floor: "Planta Baja",
+                        description: "Cama doble, armario grande, una mesita de noche y un ventilador."
+                    },
+                    bedroom4: {
+                        title: "Dormitorio 4",
+                        floor: "Sótano",
+                        description: "Cama doble, armario con espejo, escritorio con silla de oficina, ventilador, cesta de ropa y ventana en el techo."
+                    },
+                    bedroom5: {
+                        title: "Dormitorio 5",
+                        floor: "Sótano",
+                        description: "Cama doble, armario grande, escritorio con silla de oficina y ventilador."
+                    },
+                    bedroom6: {
+                        title: "Dormitorio 6",
+                        floor: "Sótano",
+                        description: "Cama individual, armario grande, escritorio ajustable con silla de oficina y ventilador."
+                    },
+                    bathrooms: {
+                        title: "Baños",
+                        description: "La casa tiene un calentador de 200 litros para duchas calientes largas.",
+                        bathroom1: "Baño 1 (Primera Planta):",
+                        bathroom1Desc: "Baño privado del Dormitorio Principal",
+                        bathroom2: "Baño 2 (Primera Planta):",
+                        bathroom2Desc: "Baño completo",
+                        toilet: "Aseo (Planta Baja)"
+                    }
+                },
+                location: {
+                    description: {
+                        title: "Ubicación",
+                        text: "La casa está ubicada en la Costa del Sol en el tranquilo pueblo de Benajarafe. El pueblo está muy bien ubicado, a media hora en coche de Málaga, más cerca que algunos destinos turísticos populares como Marbella o Fuengirola, pero con una fracción de los turistas. El pueblo es muy pequeño y tranquilo y es el lugar perfecto para disfrutar de un ritmo de vida pausado y relajarse."
+                    },
+                    title: "Cómo moverse",
+                    walk: {
+                        title: "Caminar",
+                        description: "10 min a la playa, 20 min al pueblo/Mercadona."
+                    },
+                    bicycle: {
+                        title: "Bicicleta",
+                        description: "2 bicicletas están disponibles para explorar la zona."
+                    },
+                    bus: {
+                        title: "Autobús",
+                        description: "Parada a 10 min. Cada 45 min. 50 min al centro de Málaga."
+                    },
+                    car: {
+                        title: "Coche",
+                        description: "El aparcamiento en la calle está disponible y es gratuito."
+                    }
+                },
+                reservation: {
+                    title: "Hacer una Reserva",
+                    description: "Póngase en contacto con nosotros para reservar su estancia. Estaremos encantados de responder a sus preguntas y ayudarle a planificar sus vacaciones perfectas.",
+                    email: {
+                        title: "Correo Electrónico"
+                    },
+                    phone: {
+                        title: "Teléfono / WhatsApp",
+                        whatsapp: "También puede contactarnos a través de WhatsApp",
+                        whatsappButton: "Contactar por WhatsApp"
+                    }
+                },
+                footer: {
+                    reservation: "Haz una reserva ahora"
+                }
+            }
+        };
+
+        // Current language (default: Dutch)
+        let currentLang = localStorage.getItem('language') || 'nl';
+        
+        // Language flags and names
+        const languageFlags = {
+            'nl': 'fi-nl',
+            'en': 'fi-gb',
+            'es': 'fi-es'
+        };
+        
+        const languageNames = {
+            'nl': 'Nederlands',
+            'en': 'English',
+            'es': 'Español'
+        };
+
+        // Function to change language
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('language', lang);
+            document.documentElement.lang = lang;
+            updateLanguageDisplay();
+            translatePage();
+        }
+        
+        // Function to update language display in dropdown
+        function updateLanguageDisplay() {
+            const flagElement = document.getElementById('currentLanguageFlag');
+            const nameElement = document.getElementById('currentLanguageName');
+            if (flagElement) {
+                flagElement.className = 'fi ' + (languageFlags[currentLang] || 'fi-nl');
+            }
+            if (nameElement) {
+                nameElement.textContent = languageNames[currentLang] || 'Nederlands';
+            }
+        }
+
+        // Function to translate the page
+        function translatePage() {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                const keys = key.split('.');
+                let translation = translations[currentLang];
+                
+                for (let k of keys) {
+                    if (translation && translation[k]) {
+                        translation = translation[k];
+                    } else {
+                        translation = null;
+                        break;
+                    }
+                }
+                
+                if (translation) {
+                    if (element.tagName === 'INPUT' && element.type === 'submit') {
+                        element.value = translation;
+                    } else if (element.tagName === 'TITLE') {
+                        element.textContent = translation;
+                    } else {
+                        element.textContent = translation;
+                    }
+                }
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.lang = currentLang;
+            updateLanguageDisplay();
+            translatePage();
+        });
+    </script>
 </body>
 </html>
