@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,78 +10,110 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7/css/flag-icons.min.css">
     <style>
         header {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/front.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/front.jpg');
             background-size: cover;
             background-position: center;
             color: white;
             padding: 100px 0;
         }
+
         .section-padding {
             padding: 60px 0;
         }
+
         .bg-light-gray {
             background-color: #f8f9fa;
         }
+
         .feature-icon {
             font-size: 2rem;
             color: #0d6efd;
             margin-bottom: 1rem;
         }
+
         .card {
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             border: none;
             height: 100%;
         }
+
         .image-gallery {
             display: grid;
             gap: 1.5rem;
         }
+
         /* General Image Styling */
         img {
             border-radius: 0.5rem;
         }
+
         .full-width-image {
             width: 100%;
             height: auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
             margin-bottom: 1rem;
         }
+
         .amenities-section .row {
             margin-bottom: 4rem !important;
         }
+
         .amenities-section h3 {
             margin-bottom: 1.5rem;
         }
 
         /* --- Custom Layouts --- */
-        
+
         /* Standard Grids */
         .bedroom-images {
             display: grid;
             gap: 1rem;
             margin-bottom: 1rem;
         }
+
         .bedroom-images img {
             width: 100%;
             height: auto;
             object-fit: cover;
             background-color: #f8f9fa;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         /* Responsive Columns */
-        .bedroom-images-2 { grid-template-columns: 1fr; }
-        .bedroom-images-3 { grid-template-columns: 1fr; }
-        .bedroom-images-4 { grid-template-columns: 1fr; }
+        .bedroom-images-2 {
+            grid-template-columns: 1fr;
+        }
+
+        .bedroom-images-3 {
+            grid-template-columns: 1fr;
+        }
+
+        .bedroom-images-4 {
+            grid-template-columns: 1fr;
+        }
 
         @media (min-width: 576px) {
-            .bedroom-images-2 { grid-template-columns: repeat(2, 1fr); }
-            .bedroom-images-3 { grid-template-columns: repeat(2, 1fr); }
-            .bedroom-images-4 { grid-template-columns: repeat(2, 1fr); }
+            .bedroom-images-2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bedroom-images-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .bedroom-images-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
+
         @media (min-width: 768px) {
-            .bedroom-images-3 { grid-template-columns: repeat(3, 1fr); }
-            .bedroom-images-4 { grid-template-columns: repeat(4, 1fr); }
+            .bedroom-images-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .bedroom-images-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         /* 1. Master Bedroom Layout */
@@ -90,18 +123,21 @@
             grid-template-columns: 1fr;
             margin-bottom: 1rem;
         }
+
         .master-bedroom-layout img {
             width: 100%;
             height: auto;
             object-fit: cover;
             border-radius: 0.5rem;
         }
+
         @media (min-width: 576px) {
             .master-bedroom-layout {
                 grid-template-columns: 1fr 1fr;
             }
+
             .master-bedroom-layout img:nth-child(3) {
-                grid-column: 1 / -1; 
+                grid-column: 1 / -1;
             }
         }
 
@@ -112,12 +148,14 @@
             margin-bottom: 1rem;
             grid-template-columns: 1fr;
         }
+
         .bedroom-4-layout img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             border-radius: 0.5rem;
         }
+
         @media (min-width: 768px) {
             .bedroom-4-layout {
                 grid-template-columns: 2fr 1fr;
@@ -131,18 +169,21 @@
             margin-bottom: 1rem;
             grid-template-columns: 1fr;
         }
+
         .bedroom-5-layout img {
             width: 100%;
-            height: 100%; 
+            height: 100%;
             object-fit: cover;
             border-radius: 0.5rem;
         }
+
         @media (min-width: 768px) {
             .bedroom-5-layout {
                 grid-template-columns: 2fr 1fr;
                 grid-template-rows: 1fr 1fr;
-                aspect-ratio: 16 / 10; 
+                aspect-ratio: 16 / 10;
             }
+
             .bedroom-5-layout img:nth-child(1) {
                 grid-row: 1 / 3;
                 grid-column: 1 / 2;
@@ -155,49 +196,86 @@
             grid-template-columns: 1fr 1fr;
             gap: 1.5rem;
         }
+
         .living-room-layout .stacked-images {
             display: grid;
             grid-template-columns: 1fr;
             gap: 1.5rem;
         }
-        .living-room-layout img, .side-images img, .terrace-layout img, .pool-layout img {
+
+        .living-room-layout img,
+        .side-images img,
+        .terrace-layout img,
+        .pool-layout img {
             width: 100%;
             height: auto;
             object-fit: contain;
             border-radius: 0.5rem;
             background-color: #f8f9fa;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
         }
+
         .side-images {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.75rem;
             margin-left: 1rem;
         }
+
         @media (max-width: 767px) {
-            .side-images, .living-room-layout, .terrace-first-row, .pool-layout {
+
+            .side-images,
+            .living-room-layout,
+            .terrace-first-row,
+            .pool-layout {
                 grid-template-columns: 1fr;
                 margin-left: 0;
             }
         }
-        .terrace-layout { display: grid; gap: 1.5rem; }
-        .terrace-first-row { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-        @media (min-width: 768px) {
-            .terrace-first-row { grid-template-columns: 1.5fr 1fr; gap: 1rem; }
-            .terrace-pair-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-            .pool-layout { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1rem; }
+
+        .terrace-layout {
+            display: grid;
+            gap: 1.5rem;
         }
-        .terrace-first-row .vertical-pair, .pool-layout .vertical-images {
+
+        .terrace-first-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .terrace-first-row {
+                grid-template-columns: 1.5fr 1fr;
+                gap: 1rem;
+            }
+
+            .terrace-pair-row {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .pool-layout {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 1rem;
+            }
+        }
+
+        .terrace-first-row .vertical-pair,
+        .pool-layout .vertical-images {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.75rem;
         }
+
         .bathroom-img {
             width: 100%;
             height: auto;
             object-fit: contain;
             border-radius: 0.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             background-color: #f8f9fa;
         }
 
@@ -208,56 +286,69 @@
             gap: 20px;
             justify-content: center;
         }
+
         .calendar-month {
             background: #fff;
             border: 1px solid #dee2e6;
             border-radius: 8px;
             padding: 15px;
-            width: 350px; /* Fixed width for consistency */
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            width: 350px;
+            /* Fixed width for consistency */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
+
         .calendar-header {
             text-align: center;
             font-weight: bold;
             margin-bottom: 10px;
             text-transform: capitalize;
         }
+
         .calendar-grid {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             gap: 5px;
             text-align: center;
         }
+
         .day-label {
             font-size: 0.8rem;
             font-weight: bold;
             color: #6c757d;
             padding-bottom: 5px;
         }
+
         .day-cell {
             padding: 8px 0;
             font-size: 0.9rem;
             border-radius: 4px;
             cursor: default;
         }
+
         /* Color logic */
         .day-cell.available {
-            background-color: #198754; /* Bootstrap success green */
+            background-color: #198754;
+            /* Bootstrap success green */
             color: white;
         }
+
         .day-cell.unavailable {
-            background-color: #dc3545; /* Bootstrap danger red */
+            background-color: #dc3545;
+            /* Bootstrap danger red */
             color: white;
             opacity: 0.8;
         }
+
         .day-cell.empty {
             background-color: transparent;
         }
+
         .legend-item {
             display: inline-flex;
             align-items: center;
             margin: 0 10px;
         }
+
         .legend-box {
             width: 20px;
             height: 20px;
@@ -266,6 +357,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -278,18 +370,25 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="#general" data-i18n="nav.general">General</a></li>
                     <li class="nav-item"><a class="nav-link" href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#amenities" data-i18n="nav.amenities">Amenities</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#amenities" data-i18n="nav.amenities">Amenities</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="#bedrooms" data-i18n="nav.bedrooms">Bedrooms</a></li>
                     <li class="nav-item"><a class="nav-link" href="#location" data-i18n="nav.location">Location</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#reservation" data-i18n="nav.reservation">Reservation</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#reservation"
+                            data-i18n="nav.reservation">Reservation</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span id="currentLanguageFlag" class="fi"></span> <span id="currentLanguageName" data-i18n="nav.language">Taal</span>
+                        <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="currentLanguageFlag" class="fi"></span> <span id="currentLanguageName"
+                                data-i18n="nav.language">Taal</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('nl'); return false;"><span class="fi fi-nl me-2"></span>Nederlands</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('en'); return false;"><span class="fi fi-gb me-2"></span>English</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('es'); return false;"><span class="fi fi-es me-2"></span>Español</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('nl'); return false;"><span
+                                        class="fi fi-nl me-2"></span>Nederlands</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('en'); return false;"><span
+                                        class="fi fi-gb me-2"></span>English</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="changeLanguage('es'); return false;"><span
+                                        class="fi fi-es me-2"></span>Español</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -300,7 +399,8 @@
     <header class="text-center">
         <div class="container">
             <h1 class="display-3 fw-bold" data-i18n="header.title">Holiday rental on the Costa del Sol</h1>
-            <p class="lead" data-i18n="header.subtitle">A beautiful rental home for 10 people with sea views and luxury amenities</p>
+            <p class="lead" data-i18n="header.subtitle">A beautiful rental home for 10 people with sea views and luxury
+                amenities</p>
             <a href="#pricing" class="btn btn-primary btn-lg mt-3" data-i18n="header.button">View Pricing</a>
         </div>
     </header>
@@ -312,11 +412,16 @@
                     <h2 data-i18n="general.title">The House</h2>
                     <p class="lead" data-i18n="general.subtitle">Equipped for 10 people with 6 bedrooms.</p>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><i class="bi bi-house-door me-2"></i> <span data-i18n="general.item1">1 double bedroom with ensuite & balcony</span></li>
-                        <li class="list-group-item"><i class="bi bi-layout-text-sidebar-reverse me-2"></i> <span data-i18n="general.item2">4 standard double bedrooms</span></li>
-                        <li class="list-group-item"><i class="bi bi-person me-2"></i> <span data-i18n="general.item3">1 single bed bedroom</span></li>
-                        <li class="list-group-item"><i class="bi bi-wifi me-2"></i> <span data-i18n="general.item4">1Gbps Wifi (3 connection points)</span></li>
-                        <li class="list-group-item"><i class="bi bi-droplet me-2"></i> <span data-i18n="general.item5">2.5 bathrooms (2 full, 1 toilet)</span></li>
+                        <li class="list-group-item"><i class="bi bi-house-door me-2"></i> <span
+                                data-i18n="general.item1">1 double bedroom with ensuite & balcony</span></li>
+                        <li class="list-group-item"><i class="bi bi-layout-text-sidebar-reverse me-2"></i> <span
+                                data-i18n="general.item2">4 standard double bedrooms</span></li>
+                        <li class="list-group-item"><i class="bi bi-person me-2"></i> <span data-i18n="general.item3">1
+                                single bed bedroom</span></li>
+                        <li class="list-group-item"><i class="bi bi-wifi me-2"></i> <span
+                                data-i18n="general.item4">1Gbps Wifi (3 connection points)</span></li>
+                        <li class="list-group-item"><i class="bi bi-droplet me-2"></i> <span
+                                data-i18n="general.item5">2.5 bathrooms (2 full, 1 toilet)</span></li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
@@ -367,7 +472,8 @@
                                 <li><strong><span data-i18n="pricing.week2">2 weeks:</span></strong> €3000</li>
                                 <li><strong><span data-i18n="pricing.week3">3 weeks:</span></strong> €4200</li>
                                 <li><strong><span data-i18n="pricing.week4">4 weeks:</span></strong> €5200</li>
-                                <li><strong><span data-i18n="pricing.week5plus">5+ weeks:</span></strong> +€1000/<span data-i18n="pricing.perWeek">week</span></li>
+                                <li><strong><span data-i18n="pricing.week5plus">5+ weeks:</span></strong> +€1000/<span
+                                        data-i18n="pricing.perWeek">week</span></li>
                             </ul>
                         </div>
                     </div>
@@ -384,7 +490,8 @@
                                 <li><strong><span data-i18n="pricing.week2">2 weeks:</span></strong> €1200</li>
                                 <li><strong><span data-i18n="pricing.week3">3 weeks:</span></strong> €1600</li>
                                 <li><strong><span data-i18n="pricing.week4">4 weeks:</span></strong> €2000</li>
-                                <li><strong><span data-i18n="pricing.week5plus">5+ weeks:</span></strong> +€400/<span data-i18n="pricing.perWeek">week</span></li>
+                                <li><strong><span data-i18n="pricing.week5plus">5+ weeks:</span></strong> +€400/<span
+                                        data-i18n="pricing.perWeek">week</span></li>
                             </ul>
                         </div>
                     </div>
@@ -396,11 +503,13 @@
     <section id="amenities" class="section-padding amenities-section">
         <div class="container">
             <h2 class="text-center mb-5" data-i18n="amenities.title">Amenities & Living Spaces</h2>
-            
+
             <div class="row mb-5">
                 <div class="col-12 mb-4">
                     <h3 data-i18n="amenities.livingRoom.title">Living Room</h3>
-                    <p data-i18n="amenities.livingRoom.description">Features a sofa, armchair, and coffee table for relaxation. Includes a small dining table for quick meals and storage cabinets for dishware. Most dining happens outside on the terrace!</p>
+                    <p data-i18n="amenities.livingRoom.description">Features a sofa, armchair, and coffee table for
+                        relaxation. Includes a small dining table for quick meals and storage cabinets for dishware.
+                        Most dining happens outside on the terrace!</p>
                 </div>
                 <div class="col-12">
                     <div class="living-room-layout">
@@ -421,12 +530,16 @@
                     <p data-i18n="amenities.kitchen.intro">A very well-equipped kitchen with:</p>
                     <ul>
                         <li data-i18n="amenities.kitchen.item1">Filter tap for safe drinking water</li>
-                        <li data-i18n="amenities.kitchen.item2">Oven, 4 electric stoves, Microwave/grill combi, water boiler</li>
+                        <li data-i18n="amenities.kitchen.item2">Oven, 4 electric stoves, Microwave/grill combi, water
+                            boiler</li>
                         <li data-i18n="amenities.kitchen.item3">Dishwasher, Washing machine, 200L boiler</li>
-                        <li data-i18n="amenities.kitchen.item4">Airfryer, Bread baker machine, Blender, Juice presser</li>
+                        <li data-i18n="amenities.kitchen.item4">Airfryer, Bread baker machine, Blender, Juice presser
+                        </li>
                         <li data-i18n="amenities.kitchen.item5">Large fridge, Coffee machine</li>
-                        <li data-i18n="amenities.kitchen.item6">A large collection of cookware, cutlery, glasses and tableware</li>
-                        <li data-i18n="amenities.kitchen.item7">A large collection of spices and herbs that can be used for cooking</li>
+                        <li data-i18n="amenities.kitchen.item6">A large collection of cookware, cutlery, glasses and
+                            tableware</li>
+                        <li data-i18n="amenities.kitchen.item7">A large collection of spices and herbs that can be used
+                            for cooking</li>
                     </ul>
                 </div>
                 <div class="col-md-7">
@@ -440,7 +553,8 @@
             <div class="row mb-5">
                 <div class="col-12 mb-4">
                     <h3 data-i18n="amenities.terrace.title">Terrace</h3>
-                    <p data-i18n="amenities.terrace.description">Our favorite part of the house with amazing sea views, perfect for evening dinners.</p>
+                    <p data-i18n="amenities.terrace.description">Our favorite part of the house with amazing sea views,
+                        perfect for evening dinners.</p>
                     <ul>
                         <li data-i18n="amenities.terrace.item1">Large dining table (10 chairs) with umbrella</li>
                         <li data-i18n="amenities.terrace.item2">Corner sofa with table</li>
@@ -494,17 +608,21 @@
             <div class="row mb-5">
                 <div class="col-12 mb-4">
                     <h3 data-i18n="amenities.cinema.title">Cinema</h3>
-                    <p data-i18n="amenities.cinema.description">Basement equipped with a large sofa and projector. Connected to a Plex server with a vast library of movies and series. Requests for specific content are welcome!</p>
+                    <p data-i18n="amenities.cinema.description">Basement equipped with a large sofa and projector.
+                        Connected to a Plex server with a vast library of movies and series. Requests for specific
+                        content are welcome!</p>
                 </div>
                 <div class="col-12">
                     <img src="images/cinema.jpg" class="full-width-image" alt="Cinema">
                 </div>
             </div>
 
-             <div class="row">
+            <div class="row">
                 <div class="col-12 mb-4">
                     <h3 data-i18n="amenities.pool.title">Pool & Garden</h3>
-                    <p data-i18n="amenities.pool.description">The urbanization features a well-maintained large garden with swimming pools. Includes a small pool/river between trees for relaxing and a large pool for swimming.</p>
+                    <p data-i18n="amenities.pool.description">The urbanization features a well-maintained large garden
+                        with swimming pools. Includes a small pool/river between trees for relaxing and a large pool for
+                        swimming.</p>
                 </div>
                 <div class="col-12">
                     <div class="terrace-layout">
@@ -539,11 +657,12 @@
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="bedrooms.master.title">Master Bedroom</h5>
                             <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.master.floor">First Floor</h6>
-                            <p class="card-text" data-i18n="bedrooms.master.description">Double bed, ensuite balcony with sea views, ensuite bathroom, AC, large TV, and ample wardrobe space.</p>
+                            <p class="card-text" data-i18n="bedrooms.master.description">Double bed, ensuite balcony
+                                with sea views, ensuite bathroom, AC, large TV, and ample wardrobe space.</p>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6">
                     <div class="card">
                         <div class="bedroom-images bedroom-images-2">
@@ -554,8 +673,10 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="bedrooms.bedroom2.title">Bedroom 2</h5>
-                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom2.floor">First Floor</h6>
-                            <p class="card-text" data-i18n="bedrooms.bedroom2.description">Double bed, adjustable desk with sea view, office chair, AC, and large wardrobe.</p>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom2.floor">First Floor
+                            </h6>
+                            <p class="card-text" data-i18n="bedrooms.bedroom2.description">Double bed, adjustable desk
+                                with sea view, office chair, AC, and large wardrobe.</p>
                         </div>
                     </div>
                 </div>
@@ -568,8 +689,10 @@
                         </div>
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="bedrooms.bedroom3.title">Bedroom 3</h5>
-                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom3.floor">Main Floor</h6>
-                            <p class="card-text" data-i18n="bedrooms.bedroom3.description">Double bed, large wardrobe, one nightstand, and a ventilator.</p>
+                            <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom3.floor">Main Floor
+                            </h6>
+                            <p class="card-text" data-i18n="bedrooms.bedroom3.description">Double bed, large wardrobe,
+                                one nightstand, and a ventilator.</p>
                         </div>
                     </div>
                 </div>
@@ -583,7 +706,8 @@
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="bedrooms.bedroom4.title">Bedroom 4</h5>
                             <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom4.floor">Basement</h6>
-                            <p class="card-text" data-i18n="bedrooms.bedroom4.description">Double bed, wardrobe with mirror, desk with office chair, ventilator and ceiling window.</p>
+                            <p class="card-text" data-i18n="bedrooms.bedroom4.description">Double bed, wardrobe with
+                                mirror, desk with office chair, ventilator and ceiling window.</p>
                         </div>
                     </div>
                 </div>
@@ -598,7 +722,8 @@
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="bedrooms.bedroom5.title">Bedroom 5</h5>
                             <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom5.floor">Basement</h6>
-                            <p class="card-text" data-i18n="bedrooms.bedroom5.description">Double bed, large wardrobe, desk with office chair, and ventilator.</p>
+                            <p class="card-text" data-i18n="bedrooms.bedroom5.description">Double bed, large wardrobe,
+                                desk with office chair, and ventilator.</p>
                         </div>
                     </div>
                 </div>
@@ -612,23 +737,28 @@
                         <div class="card-body">
                             <h5 class="card-title" data-i18n="bedrooms.bedroom6.title">Bedroom 6</h5>
                             <h6 class="card-subtitle mb-2 text-muted" data-i18n="bedrooms.bedroom6.floor">Basement</h6>
-                            <p class="card-text" data-i18n="bedrooms.bedroom6.description">Single bed, large wardrobe, adjustable desk with office chair, and ventilator.</p>
+                            <p class="card-text" data-i18n="bedrooms.bedroom6.description">Single bed, large wardrobe,
+                                adjustable desk with office chair, and ventilator.</p>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="mt-5">
                 <h4 data-i18n="bedrooms.bathrooms.title">Bathrooms</h4>
                 <p data-i18n="bedrooms.bathrooms.description">The house has a 200-liter boiler for long hot showers.</p>
                 <div class="row g-4 mt-3">
                     <div class="col-md-4">
                         <img src="images/bathroom_1.jpg" class="bathroom-img" alt="Bathroom 1">
-                        <p class="mt-2"><strong data-i18n="bedrooms.bathrooms.bathroom1">Bathroom 1 (First Floor):</strong> <span data-i18n="bedrooms.bathrooms.bathroom1Desc">Ensuite to Master Bedroom</span></p>
+                        <p class="mt-2"><strong data-i18n="bedrooms.bathrooms.bathroom1">Bathroom 1 (First
+                                Floor):</strong> <span data-i18n="bedrooms.bathrooms.bathroom1Desc">Ensuite to Master
+                                Bedroom</span></p>
                     </div>
                     <div class="col-md-4">
                         <img src="images/bathroom_2.jpg" class="bathroom-img" alt="Bathroom 2">
-                        <p class="mt-2"><strong data-i18n="bedrooms.bathrooms.bathroom2">Bathroom 2 (First Floor):</strong> <span data-i18n="bedrooms.bathrooms.bathroom2Desc">Full bathroom</span></p>
+                        <p class="mt-2"><strong data-i18n="bedrooms.bathrooms.bathroom2">Bathroom 2 (First
+                                Floor):</strong> <span data-i18n="bedrooms.bathrooms.bathroom2Desc">Full bathroom</span>
+                        </p>
                     </div>
                     <div class="col-md-4">
                         <img src="images/toilet.jpg" class="bathroom-img" alt="Toilet">
@@ -644,10 +774,15 @@
             <div class="row mb-5">
                 <div class="col-12 mb-4">
                     <h2 class="text-center mb-4" data-i18n="location.description.title">Location</h2>
-                    <p class="lead text-center" data-i18n="location.description.text">The house is located on the Costa del Sol in the tranquil town of Benajarafe. The town is very conveniently located, within half an hour drive of Malaga, closer than some of the popular holiday destinations as Marbella or Fuengirola, but with a fraction of the tourists. The town is very small and quiet and it is the perfect place to enjoy a slow pace of life and relax.</p>
+                    <p class="lead text-center" data-i18n="location.description.text">The house is located on the Costa
+                        del Sol in the tranquil town of Benajarafe. The town is very conveniently located, within half
+                        an hour drive of Malaga, closer than some of the popular holiday destinations as Marbella or
+                        Fuengirola, but with a fraction of the tourists. The town is very small and quiet and it is the
+                        perfect place to enjoy a slow pace of life and relax.</p>
                 </div>
                 <div class="col-12 mb-5">
-                    <img src="images/map_benajarafe.png" class="img-fluid rounded" alt="Map of Benajarafe" style="max-width: 100%; height: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
+                    <img src="images/map_benajarafe.png" class="img-fluid rounded" alt="Map of Benajarafe"
+                        style="max-width: 100%; height: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
                 </div>
             </div>
             <h2 class="text-center mb-4" data-i18n="location.title">How to get around</h2>
@@ -670,7 +805,8 @@
                 <div class="col-md-3 mb-3">
                     <i class="bi bi-car-front feature-icon"></i>
                     <h4 data-i18n="location.car.title">Car</h4>
-                    <p data-i18n="location.car.description">Street parking is available and free. 30 min to the centre of Malaga or to the airport.</p>
+                    <p data-i18n="location.car.description">Street parking is available and free. 30 min to the centre
+                        of Malaga or to the airport.</p>
                 </div>
             </div>
         </div>
@@ -679,175 +815,267 @@
     <section id="things-to-do" class="section-padding bg-light-gray">
         <div class="container">
             <h2 class="text-center mb-5" data-i18n="activities.title">Things to do</h2>
-            
+
             <div id="activitiesCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    
+
                     <div class="carousel-item active">
                         <div class="row g-4">
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/malaga.jpg" class="card-img-top" alt="Malaga" style="height: 200px; object-fit: cover;">
+                                    <img src="images/malaga.jpg" class="card-img-top" alt="Malaga"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center" data-i18n="activities.malaga">Malaga</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.malagaTime">30 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.malagaDesc">
-                                            A vibrant city blending history and modernity. Explore its charming old town, impressive cathedral, and beautiful port area.
-                                            Malaga also offers great museums, delicious local cuisine, and an inviting urban beach just minutes from the center.
+                                            A vibrant city blending history and modernity. Explore its charming old
+                                            town, impressive cathedral, and beautiful port area.
+                                            Malaga also offers great museums, delicious local cuisine, and an inviting
+                                            urban beach just minutes from the center.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/frigiliana.jpg" class="card-img-top" alt="Frigiliana" style="height: 200px; object-fit: cover;">
+                                    <img src="images/frigiliana.jpg" class="card-img-top" alt="Frigiliana"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.frigiliana">Frigiliana</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.frigiliana">Frigiliana
+                                        </h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.frigilianaTime">30 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.frigilianaDesc">
-                                            Often voted the prettiest village in Andalusia, Frigiliana offers a maze of whitewashed houses and cobbled streets.                                            <br>
-                                            Its Moorish quarter, artisan shops, and scenic viewpoints make it ideal for a relaxing day trip.
+                                            Often voted the prettiest village in Andalusia, Frigiliana offers a maze of
+                                            whitewashed houses and cobbled streets. <br>
+                                            Its Moorish quarter, artisan shops, and scenic viewpoints make it ideal for
+                                            a relaxing day trip.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/torcal.jpg" class="card-img-top" alt="Torcal de Antequera" style="height: 200px; object-fit: cover;">
+                                    <img src="images/torcal.jpg" class="card-img-top" alt="Torcal de Antequera"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.torcal">Torcal de Antequera</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.torcal">Torcal de
+                                            Antequera</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.torcalTime">1 hour drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.torcalDesc">
-                                            A unique nature reserve famous for its surreal limestone formations shaped over millions of years.
-                                            The hiking trails lead through a dramatic landscape ideal for photography, wildlife spotting, and enjoying nature.
+                                            A unique nature reserve famous for its surreal limestone formations shaped
+                                            over millions of years.
+                                            The hiking trails lead through a dramatic landscape ideal for photography,
+                                            wildlife spotting, and enjoying nature.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- PAGE 2 -->
                     <div class="carousel-item">
                         <div class="row g-4">
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/nerja_caves.jpg" class="card-img-top" alt="Caves of Nerja" style="height: 200px; object-fit: cover;">
+                                    <img src="images/nerja_caves.jpg" class="card-img-top" alt="Caves of Nerja"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.nerja">Caves of Nerja</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.nerja">Caves of Nerja
+                                        </h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.nerjaTime">30 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.nerjaDesc">
-                                            A spectacular series of enormous caverns stretching nearly five kilometers, home to one of the world’s largest stalactites.
-                                            Guided routes illuminate the geological formations and prehistoric paintings that make these caves globally significant.
+                                            A spectacular series of enormous caverns stretching nearly five kilometers,
+                                            home to one of the world’s largest stalactites.
+                                            Guided routes illuminate the geological formations and prehistoric paintings
+                                            that make these caves globally significant.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/benajarafe_beach.jpg" class="card-img-top" alt="Benajarafe Beach" style="height: 200px; object-fit: cover;">
+                                    <img src="images/benajarafe_beach.jpg" class="card-img-top" alt="Benajarafe Beach"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.benajarafe">Benajarafe Beach</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.benajarafe">Benajarafe
+                                            Beach</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-person-walking me-1"></i>
+                                            <span data-i18n="activities.benajarafeTime">10 min walk</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.benajarafeDesc">
-                                            Your local beach, known for its dark sand, calm atmosphere, and pleasant waves.
-                                            It’s perfect for relaxing walks, sunset views, and enjoying beachfront chiringuitos with fresh seafood.
+                                            Your local beach, known for its dark sand, calm atmosphere, and pleasant
+                                            waves.
+                                            It’s perfect for relaxing walks, sunset views, and enjoying beachfront
+                                            chiringuitos with fresh seafood.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/torre_del_mar.jpg" class="card-img-top" alt="Torre del Mar" style="height: 200px; object-fit: cover;">
+                                    <img src="images/torre_del_mar.jpg" class="card-img-top" alt="Torre del Mar"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.torre">Torre del Mar</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.torre">Torre del Mar
+                                        </h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.torreTime">15 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.torreDesc">
-                                            A lively coastal town with one of Europe’s longest and nicest promenades, ideal for cycling or seaside strolls.
-                                            The area offers great restaurants, wide beaches, and a relaxed holiday atmosphere year-round.
+                                            A lively coastal town with one of Europe’s longest and nicest promenades,
+                                            ideal for cycling or seaside strolls.
+                                            The area offers great restaurants, wide beaches, and a relaxed holiday
+                                            atmosphere year-round.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- PAGE 3 -->
                     <div class="carousel-item">
                         <div class="row g-4">
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/sierra_tejada.jpg" class="card-img-top" alt="Sierras de Tejada" style="height: 200px; object-fit: cover;">
+                                    <img src="images/sierra_tejada.jpg" class="card-img-top" alt="Sierras de Tejada"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.tejada">Sierras de Tejada</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.tejada">Sierras de
+                                            Tejada</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.tejadaTime">30 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.tejadaDesc">
-                                            A stunning natural park forming a rugged border between Malaga and Granada, known for its dramatic peaks.
-                                            It’s a paradise for hikers, offering trails with panoramic views, rich vegetation, and abundant wildlife.
+                                            A stunning natural park forming a rugged border between Malaga and Granada,
+                                            known for its dramatic peaks.
+                                            It’s a paradise for hikers, offering trails with panoramic views, rich
+                                            vegetation, and abundant wildlife.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/sierra_nevada.jpg" class="card-img-top" alt="La Sierra Nevada" style="height: 200px; object-fit: cover;">
+                                    <img src="images/sierra_nevada.jpg" class="card-img-top" alt="La Sierra Nevada"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.sierranevada">La Sierra Nevada</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.sierranevada">La Sierra
+                                            Nevada</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.sierranevadaTime">2 hour drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.sierranevadaDesc">
-                                            A dramatic mountain range offering world-class skiing in winter and exceptional hiking routes in summer.
-                                            The region boasts unique flora and fauna, picturesque alpine villages, and Spain’s highest peak: Mulhacén.
+                                            A dramatic mountain range offering world-class skiing in winter and
+                                            exceptional hiking routes in summer.
+                                            The region boasts unique flora and fauna, picturesque alpine villages, and
+                                            Spain’s highest peak: Mulhacén.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/granada.jpg" class="card-img-top" alt="Granada" style="height: 200px; object-fit: cover;">
+                                    <img src="images/granada.jpg" class="card-img-top" alt="Granada"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center" data-i18n="activities.granada">Granada</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.granadaTime">1 hour 30 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.granadaDesc">
-                                            A city steeped in Moorish history, famously home to the Alhambra, one of the world’s greatest architectural treasures.
-                                            Its narrow streets, vibrant tapas culture, and scenic viewpoints make it a must-visit destination.
+                                            A city steeped in Moorish history, famously home to the Alhambra, one of the
+                                            world’s greatest architectural treasures.
+                                            Its narrow streets, vibrant tapas culture, and scenic viewpoints make it a
+                                            must-visit destination.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-    
+
                     <!-- PAGE 4 -->
                     <div class="carousel-item">
                         <div class="row g-4">
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/caminito.jpg" class="card-img-top" alt="Caminito del Rey" style="height: 200px; object-fit: cover;">
+                                    <img src="images/caminito.jpg" class="card-img-top" alt="Caminito del Rey"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
-                                        <h5 class="card-title text-center" data-i18n="activities.caminito">Caminito del Rey</h5>
+                                        <h5 class="card-title text-center" data-i18n="activities.caminito">Caminito del
+                                            Rey</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.caminitoTime">1 hour 15 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.caminitoDesc">
-                                            Once known as the world’s most dangerous path, the Caminito del Rey is now a safe yet thrilling walkway along steep gorge walls.                                            <br>
-                                            The route offers breathtaking canyon views and a unique adventure into Andalusia’s wild interior landscapes.
+                                            Once known as the world’s most dangerous path, the Caminito del Rey is now a
+                                            safe yet thrilling walkway along steep gorge walls. <br>
+                                            The route offers breathtaking canyon views and a unique adventure into
+                                            Andalusia’s wild interior landscapes.
                                         </p>
                                     </div>
                                 </div>
                             </div>
-    
+
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/ronda.jpg" class="card-img-top" alt="Ronda" style="height: 200px; object-fit: cover;">
+                                    <img src="images/ronda.jpg" class="card-img-top" alt="Ronda"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center" data-i18n="activities.ronda">Ronda</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.rondaTime">1 hour 30 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.rondaDesc">
-                                            A mountaintop city set dramatically above a massive gorge, connected by the iconic Puente Nuevo bridge.                                            <br>
-                                            Ronda combines breathtaking scenery with rich cultural heritage, making it one of Spain’s most romantic destinations.
+                                            A mountaintop city set dramatically above a massive gorge, connected by the
+                                            iconic Puente Nuevo bridge. <br>
+                                            Ronda combines breathtaking scenery with rich cultural heritage, making it
+                                            one of Spain’s most romantic destinations.
                                         </p>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="card h-100">
-                                    <img src="images/mijas.jpg" class="card-img-top" alt="Mijas" style="height: 200px; object-fit: cover;">
+                                    <img src="images/mijas.jpg" class="card-img-top" alt="Mijas"
+                                        style="height: 200px; object-fit: cover;">
                                     <div class="card-body">
                                         <h5 class="card-title text-center" data-i18n="activities.mijas">Mijas</h5>
+                                        <p class="text-center text-primary mb-2 small fw-bold">
+                                            <i class="bi bi-car-front-fill me-1"></i>
+                                            <span data-i18n="activities.mijasTime">45 min drive</span>
+                                        </p>
                                         <p class="card-text small text-muted" data-i18n="activities.mijasDesc">
-                                            A classic Andalusian white village nestled in the mountains, offering breathtaking views over the Costa del Sol.
-                                            Wander its narrow streets, enjoy artisan shops, and visit its small but charming bullring and historical landmarks.
+                                            A classic Andalusian white village nestled in the mountains, offering
+                                            breathtaking views over the Costa del Sol.
+                                            Wander its narrow streets, enjoy artisan shops, and visit its small but
+                                            charming bullring and historical landmarks.
                                         </p>
                                     </div>
                                 </div>
@@ -855,12 +1083,14 @@
                         </div>
                     </div>
                 </div>
-    
-                <button class="carousel-control-prev" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="prev">
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#activitiesCarousel"
+                    data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#activitiesCarousel" data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#activitiesCarousel"
+                    data-bs-slide="next">
                     <span class="carousel-control-next-icon bg-dark rounded-circle p-3" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
@@ -871,7 +1101,7 @@
     <section id="reservation" class="section-padding bg-light-gray">
         <div class="container">
             <h2 class="text-center mb-4" data-i18n="reservation.title">Availability</h2>
-            
+
             <div class="d-flex justify-content-center mb-4">
                 <div class="legend-item">
                     <div class="legend-box" style="background-color: #198754;"></div>
@@ -892,39 +1122,44 @@
                     <i class="bi bi-chevron-right"></i>
                 </button>
             </div>
-            
+
             <div id="calendar-container" class="calendar-wrapper">
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-8 text-center">
-                        <br>
-                        <p class="lead mb-4" data-i18n="reservation.description">Get in touch with us to book your stay. We're happy to answer any questions and help you plan your perfect holiday.</p>
-                        <div class="row g-4">
-                            <div class="col-md-6">
-                                <div class="p-4 border rounded bg-white">
-                                    <i class="bi bi-envelope feature-icon"></i>
-                                    <h4 data-i18n="reservation.email.title">Email</h4>
-                                    <p class="mb-0">
-                                        <a href="mailto:rutger.a.berghuis@gmail.com" class="text-decoration-none">rutger.a.berghuis@gmail.com</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="p-4 border rounded bg-white">
-                                    <i class="bi bi-telephone feature-icon"></i>
-                                    <h4 data-i18n="reservation.phone.title">Phone / WhatsApp</h4>
-                                    <p class="mb-2">
-                                        <a href="tel:+34621371975" class="text-decoration-none">+34 621 371 975</a>
-                                    </p>
-                                    <p class="mb-0 small text-muted" data-i18n="reservation.phone.whatsapp">You can also reach us through WhatsApp</p>
-                                    <a href="https://wa.me/34621371975" class="btn btn-success btn-sm mt-2" target="_blank" rel="noopener noreferrer">
-                                        <i class="bi bi-whatsapp me-1"></i> <span data-i18n="reservation.phone.whatsappButton">Contact via WhatsApp</span>
-                                    </a>
-                                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <br>
+                    <p class="lead mb-4" data-i18n="reservation.description">Get in touch with us to book your stay.
+                        We're happy to answer any questions and help you plan your perfect holiday.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="p-4 border rounded bg-white">
+                                <i class="bi bi-envelope feature-icon"></i>
+                                <h4 data-i18n="reservation.email.title">Email</h4>
+                                <p class="mb-0">
+                                    <a href="mailto:rutger.a.berghuis@gmail.com"
+                                        class="text-decoration-none">rutger.a.berghuis@gmail.com</a>
+                                </p>
                             </div>
                         </div>
-                    </div>    
-        </div>
+                        <div class="col-md-6">
+                            <div class="p-4 border rounded bg-white">
+                                <i class="bi bi-telephone feature-icon"></i>
+                                <h4 data-i18n="reservation.phone.title">Phone / WhatsApp</h4>
+                                <p class="mb-2">
+                                    <a href="tel:+34621371975" class="text-decoration-none">+34 621 371 975</a>
+                                </p>
+                                <p class="mb-0 small text-muted" data-i18n="reservation.phone.whatsapp">You can also
+                                    reach us through WhatsApp</p>
+                                <a href="https://wa.me/34621371975" class="btn btn-success btn-sm mt-2" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <i class="bi bi-whatsapp me-1"></i> <span
+                                        data-i18n="reservation.phone.whatsappButton">Contact via WhatsApp</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -1082,6 +1317,18 @@
                 },
                 activities: {
                     title: "Things to do",
+                    malagaTime: "30 min drive",
+                    frigilianaTime: "30 min drive",
+                    torcalTime: "1 hour drive",
+                    nerjaTime: "30 min drive",
+                    benajarafeTime: "10 min walk",
+                    torreTime: "15 min drive",
+                    tejadaTime: "30 min drive",
+                    sierranevadaTime: "2 hour drive",
+                    granadaTime: "1 hour 30 min drive",
+                    caminitoTime: "1 hour 15 min drive",
+                    rondaTime: "1 hour 30 min drive",
+                    mijasTime: "45 min drive",
 
                     malaga: "Malaga",
                     malagaDesc: "A vibrant city blending history and modernity. Explore its charming old town, impressive cathedral, and beautiful port area. Malaga also offers great museums, delicious local cuisine, and an inviting urban beach just minutes from the center.",
@@ -1288,6 +1535,18 @@
                 },
                 activities: {
                     title: "Dingen om te doen",
+                    malagaTime: "30 min rijden",
+                    frigilianaTime: "30 min rijden",
+                    torcalTime: "1 uur rijden",
+                    nerjaTime: "30 min rijden",
+                    benajarafeTime: "10 min lopen",
+                    torreTime: "15 min rijden",
+                    tejadaTime: "30 min rijden",
+                    sierranevadaTime: "2 uur rijden",
+                    granadaTime: "1 uur 30 min rijden",
+                    caminitoTime: "1 uur 15 min rijden",
+                    rondaTime: "1 uur 30 min rijden",
+                    mijasTime: "45 min rijden",
 
                     malaga: "Malaga",
                     malagaDesc: "Een bruisende stad die geschiedenis en moderniteit combineert. Verken de charmante oude binnenstad, de indrukwekkende kathedraal en het prachtige havengebied. Malaga biedt ook geweldige musea, heerlijke lokale gerechten en een uitnodigend stadsstrand op slechts enkele minuten van het centrum.",
@@ -1494,6 +1753,18 @@
                 },
                 activities: {
                     title: "Cosas que hacer",
+                    malagaTime: "30 min en coche",
+                    frigilianaTime: "30 min en coche",
+                    torcalTime: "1 hora en coche",
+                    nerjaTime: "30 min en coche",
+                    benajarafeTime: "10 min a pie",
+                    torreTime: "15 min en coche",
+                    tejadaTime: "30 min en coche",
+                    sierranevadaTime: "2 horas en coche",
+                    granadaTime: "1 hora 30 min en coche",
+                    caminitoTime: "1 hora 15 min en coche",
+                    rondaTime: "1 hora 30 min en coche",
+                    mijasTime: "45 min en coche",
 
                     malaga: "Málaga",
                     malagaDesc: "Una ciudad vibrante que combina historia y modernidad. Explora su encantador casco antiguo, su impresionante catedral y la hermosa zona del puerto. Málaga también ofrece excelentes museos, deliciosa cocina local y una atractiva playa urbana a pocos minutos del centro.",
@@ -1553,14 +1824,14 @@
 
         // Current language (default: Dutch)
         let currentLang = localStorage.getItem('language') || 'nl';
-        
+
         // Language flags and names
         const languageFlags = {
             'nl': 'fi-nl',
             'en': 'fi-gb',
             'es': 'fi-es'
         };
-        
+
         const languageNames = {
             'nl': 'Nederlands',
             'en': 'English',
@@ -1575,7 +1846,7 @@
             updateLanguageDisplay();
             translatePage();
         }
-        
+
         // Function to update language display in dropdown
         function updateLanguageDisplay() {
             const flagElement = document.getElementById('currentLanguageFlag');
@@ -1595,7 +1866,7 @@
                 const key = element.getAttribute('data-i18n');
                 const keys = key.split('.');
                 let translation = translations[currentLang];
-                
+
                 for (let k of keys) {
                     if (translation && translation[k]) {
                         translation = translation[k];
@@ -1604,7 +1875,7 @@
                         break;
                     }
                 }
-                
+
                 if (translation) {
                     if (element.tagName === 'INPUT' && element.type === 'submit') {
                         element.value = translation;
@@ -1618,7 +1889,7 @@
         }
 
         // Initialize on page load
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             document.documentElement.lang = currentLang;
             updateLanguageDisplay();
             translatePage();
@@ -1638,9 +1909,9 @@
         /* ========================================== */
 
         // State variable to track the first month being shown
-        let currentViewDate = new Date(); 
+        let currentViewDate = new Date();
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             initCalendarState();
             renderCalendar();
         });
@@ -1675,14 +1946,14 @@
                 // Calculate the month to show in this iteration
                 const currentMonthDate = new Date(currentViewDate);
                 currentMonthDate.setMonth(currentViewDate.getMonth() + i);
-                
+
                 const year = currentMonthDate.getFullYear();
                 const monthIndex = currentMonthDate.getMonth(); // 0-11
-                
+
                 // Create Month HTML Structure
                 const monthDiv = document.createElement('div');
                 monthDiv.className = 'calendar-month';
-                
+
                 // Header (e.g., "June 2026")
                 const monthName = currentMonthDate.toLocaleString('default', { month: 'long', year: 'numeric' });
                 const header = document.createElement('div');
@@ -1705,7 +1976,7 @@
 
                 // Calculate days in month and starting day
                 const daysInMonth = new Date(year, monthIndex + 1, 0).getDate();
-                
+
                 // Adjust logic so Monday is 0 index, Sunday is 6
                 let firstDayIndex = new Date(year, monthIndex, 1).getDay();
                 firstDayIndex = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
@@ -1722,17 +1993,17 @@
                     const cell = document.createElement('div');
                     const cellDate = new Date(year, monthIndex, day);
                     // Reset time to avoid timezone mismatch
-                    cellDate.setHours(12, 0, 0, 0); 
-                    
+                    cellDate.setHours(12, 0, 0, 0);
+
                     cell.textContent = day;
-                    
+
                     // Check availability
                     let isAvailable = false;
                     for (const range of availableRanges) {
                         const start = new Date(range.start);
-                        start.setHours(12,0,0,0);
+                        start.setHours(12, 0, 0, 0);
                         const end = new Date(range.end);
-                        end.setHours(12,0,0,0);
+                        end.setHours(12, 0, 0, 0);
 
                         if (cellDate >= start && cellDate <= end) {
                             isAvailable = true;
@@ -1757,4 +2028,5 @@
         }
     </script>
 </body>
+
 </html>
